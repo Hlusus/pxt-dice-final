@@ -1,25 +1,21 @@
-// Nazvy funkci prosim neberte serizone
-// let maxNumber = 0
-let jardaklatil = 0
-// let currentNumber = 0
-let opicka = 0
-// let canShake = false
-let indickydeti = false
-indickydeti = true
-opicka = 6
-jardaklatil = 99
+let maxNumber = 0
+let currentNumber = 0
+let canShake = false
+canShake = true
+currentNumber = 6
+maxNumber = 99
 // toto zmensuje cislo kdyz zmacknu A
 input.onButtonPressed(Button.A, function () {
-    if (jardaklatil > 1) {
-        jardaklatil += -1
-        whaleysans.showNumber(jardaklatil)
+    if (maxNumber > 1) {
+        maxNumber += -1
+        whaleysans.showNumber(maxNumber)
     }
 })
 // toto zvetsuje cislo kdyz zmacknu B
 input.onButtonPressed(Button.B, function () {
-    if (jardaklatil < 99) {
-        jardaklatil += 1
-        whaleysans.showNumber(jardaklatil)
+    if (maxNumber < 99) {
+        maxNumber += 1
+        whaleysans.showNumber(maxNumber)
     }
 })
 
@@ -29,7 +25,7 @@ input.onGesture(Gesture.Shake, function () {
 // toto se stara ze kdyz zmacknu microbit tlacitko, tak to dela ty vecicky dole
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     // povoluje shakovani
-    indickydeti = true
+    canShake = true
     // vymaze vsechno na displeji
     basic.clearScreen()
     // prehraje zvuk
@@ -37,10 +33,10 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
 })
 // tato funkce se stara o to ze kdyz s tim zashakuju tak to vytvori number (nebo nase oblibene cislo)
 function generateRandomNumber() {
-    if (indickydeti) {
-        indickydeti = false
-        opicka = Math.floor(Math.random() * jardaklatil) + 1
-        whaleysans.showNumber(opicka)
+    if (canShake) {
+        canShake = false
+        currentNumber = Math.floor(Math.random() * maxNumber) + 1
+        whaleysans.showNumber(currentNumber)
         // toto prehraje zvuk kdyz s tim zashakuju
         music.playTone(350, music.beat(BeatFraction.Whole))
     }
